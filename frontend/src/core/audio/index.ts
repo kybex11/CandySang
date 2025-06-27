@@ -51,6 +51,10 @@ export class Audio {
     }
 
     setGlobalVol(vol: number): this {
+        if (vol < 0) {
+            Howler.volume(0);
+            return this;
+        }
         Howler.volume(vol);
         return this;
     }
