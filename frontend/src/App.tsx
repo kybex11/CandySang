@@ -9,7 +9,9 @@ export default function App() {
     useEffect(() => {
         const container = document.getElementById('canvas-container');
         if (container && isGameShow) {
-            new Renderer(container);
+            const renderer = new Renderer();
+            
+            renderer.initializePlayer(container);
         }
     }, [isGameShow]);
 

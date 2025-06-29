@@ -1,0 +1,5 @@
+{
+    "name": "Test",
+    "type": "pvp",
+    "masterListURL": "http://localhost:3300"
+}
