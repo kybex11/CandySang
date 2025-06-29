@@ -60,7 +60,7 @@ const config: Config = {
     navbar: {
       title: 'CandySang',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'CandySang',
         src: 'img/logo.svg',
       },
       items: [
@@ -69,6 +69,12 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Documentation',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: 'Download',
         },
         {
           href: 'https://github.com/kybex11/CandySang',
