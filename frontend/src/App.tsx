@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Renderer } from './core/renderer';
+import Menu from './core/visual/Menu';
 
 export default function App() {
     const [isGameShow, setIsGameShow] = useState<boolean>(false);
@@ -12,14 +13,14 @@ export default function App() {
         }
     }, [isGameShow]);
 
+    const handleStartGame = () => {
+        setIsMenuShow(false);
+        setIsGameShow(true);
+    };
+
     return (
         <>
-            {isMenuShow && (
-                <div>
-                    <h1>Menu</h1>
-                    <button onClick={() => { setIsMenuShow(false); setIsGameShow(true); }}>Start Game</button>
-                </div>
-            )}
+            {isMenuShow && <Menu onStartGame={handleStartGame} />}
             {isGameShow && (
                 <div id="canvas-container"></div>
             )}

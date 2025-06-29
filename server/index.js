@@ -1,15 +1,26 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const app = express();
+const port = 3000;
 const fs = require('fs').promises;
 
 let MAP;
+let GAMECONFIG;
 
-try {
-    MAP = await fs.readFile('./data/map.json');
-} catch (e) { 
-    throw new Error(`CandySang: ${e}`);
+async function initialize() {
+    try {
+        MAP = await fs.readFile('./data/map.json');
+    } catch (e) { 
+        throw new Error(`CandySang: ${e}`);
+    }
+    
+    try {
+        GAMECONFIG = await fs.readFile('./env/gameconfig.json');
+    } catch (e) { 
+        throw new Error(`CandySang: ${e}`);
+    }
 }
+
+initialize();
 
 app.get('/', (req, res) => {
     console.log('CandySang: Test Passed! {😃}')
@@ -18,6 +29,10 @@ app.get('/', (req, res) => {
 
 app.get('/getMap', (req, res) => {
     res.send(MAP);
+})
+
+app.get('/get', (req, res) => {
+    res.send(GAMECONFIG);
 })
 
 app.listen(port, () => {
